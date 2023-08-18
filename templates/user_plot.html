@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interactive Graph</title>
+</head>
+<body>
+    {% for graphJSON in graphJSONs %}
+        <div id="graph{{ loop.index }}"></div>
+    {% endfor %}
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script>
+        // JavaScript code to render the Plotly graphs
+        document.addEventListener("DOMContentLoaded", function() {
+            {% for graphJSON in graphJSONs %}
+                var graphJSON{{ loop.index }} = {{ graphJSON | safe }};
+                Plotly.newPlot('graph{{ loop.index }}', graphJSON{{ loop.index }}.data, graphJSON{{ loop.index }}.layout);
+            {% endfor %}
+        });
+    </script>
+    <!-- <div id="plotly-graph"></div>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script>
+        // JavaScript code to render the Plotly graph
+        document.addEventListener("DOMContentLoaded", function() {
+            var graphJSON = {{ graphJSON | safe }};
+            Plotly.newPlot('plotly-graph', graphJSON.data, graphJSON.layout);
+
+            var graphJSON1 = {{ graphJSON_1 | safe }};
+            Plotly.newPlot('graph1', graphJSON1.data, graphJSON1.layout);
+
+            var graphJSON2 = {{ graphJSON_2 | safe }};
+            Plotly.newPlot('graph2', graphJSON2.data, graphJSON2.layout);
+
+            var graphJSON3 = {{ graphJSON_3 | safe }};
+            Plotly.newPlot('graph1', graphJSON3.data, graphJSON3.layout);
+
+            var graphJSON4 = {{ graphJSON_4 | safe }};
+            Plotly.newPlot('graph2', graphJSON4.data, graphJSON4.layout);
+        });
+    </script> -->
+</body>
+</html>

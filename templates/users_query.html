@@ -1,0 +1,11 @@
+<form action="/user/" method="POST">
+    <label for="user-select">Choose a team:</label>
+
+    <select name="selected-user" id="user-select">
+        <option value="">--Please choose an option--</option>
+        {% for id, name in total_users %}
+            <option value={{ id }}>{{ name }}</option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Submit">
+</form>
