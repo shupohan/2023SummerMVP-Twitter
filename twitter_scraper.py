@@ -60,8 +60,11 @@ def scrape_user_data(search_name):
     # Initialize Chrome driver using webdriver_manager
     # driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
 
+    # service = ChromeService(
+    #     executable_path="/home/shupohan/Downloads/chromedriver-linux64"
+    # )
     service = ChromeService(
-        executable_path="/home/shupohan/Downloads/chromedriver-linux64"
+        executable_path="./chromedriver-linux64"
     )
     driver = webdriver.Chrome(service=service)
 
